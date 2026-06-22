@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { ArrowUpRight, BadgeCheck, Download, FileText, Globe, Wrench } from 'lucide-react'
 import { Space_Grotesk } from 'next/font/google'
 import { capabilityGroups, overviewCards, publicDocs } from '../content'
@@ -7,13 +6,13 @@ const displayFont = Space_Grotesk({ subsets: ['latin', 'latin-ext'] })
 
 function DocLink({ fileName, label }: { fileName: string; label: string }) {
   return (
-    <Link
+    <a
       href={`/api/public-docs/${encodeURIComponent(fileName)}`}
       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/10"
     >
       <Download className="h-3.5 w-3.5" />
       {label}
-    </Link>
+    </a>
   )
 }
 
