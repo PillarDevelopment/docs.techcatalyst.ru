@@ -2,114 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg: #06070b;
-  --bg-elevated: rgba(15, 17, 24, 0.78);
-  --bg-soft: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #f5f7fb;
-  --text-muted: #9ca6ba;
-  --accent-a: #7dd3fc;
-  --accent-b: #c084fc;
-  --accent-c: #f59e0b;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100vh;
-  color: var(--text);
-  background:
-    radial-gradient(circle at 15% 20%, rgba(125, 211, 252, 0.16), transparent 28%),
-    radial-gradient(circle at 85% 18%, rgba(192, 132, 252, 0.16), transparent 26%),
-    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.12), transparent 28%),
-    linear-gradient(180deg, #05060a 0%, #090b12 42%, #05060a 100%);
+  @apply bg-white text-ink antialiased;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black, transparent 85%);
-}
-
-* {
-  border-color: var(--border);
-}
-
-*::selection {
-  background: rgba(192, 132, 252, 0.35);
-  color: #fff;
-}
-
-a,
-button {
-  transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
-}
-
-.glass-panel {
-  background: linear-gradient(180deg, rgba(22, 25, 35, 0.82), rgba(11, 13, 19, 0.92));
-  border: 1px solid var(--border);
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-}
-
-.glass-panel-soft {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-}
-
-.accent-text {
-  background: linear-gradient(135deg, var(--accent-a), var(--accent-b) 55%, var(--accent-c));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.glow-ring {
-  position: relative;
-}
-
-.glow-ring::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(125, 211, 252, 0.65), rgba(192, 132, 252, 0.45), rgba(245, 158, 11, 0.5));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeInUp 0.45s ease-out;
+::selection {
+  background: #e2e2fd;
 }
