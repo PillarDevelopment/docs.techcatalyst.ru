@@ -1,12 +1,5 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Rubik } from 'next/font/google'
-
-const rubik = Rubik({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: 'TechCatalyst AI Documentation',
@@ -21,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${rubik.className} antialiased`}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }
