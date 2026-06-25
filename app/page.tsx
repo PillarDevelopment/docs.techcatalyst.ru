@@ -1,5 +1,5 @@
 import { ArrowUpRight, BadgeCheck, Download, FileText, Globe, Layers3, ShieldCheck, Wrench } from 'lucide-react'
-import { capabilityGroups, overviewCards, publicDocs } from '../content'
+import { capabilityGroups, overviewCards, publicDocs, registryRequiredDocs } from '../content'
 
 function Wrap({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <div className={`mx-auto max-w-[1140px] px-6 max-sm:px-[18px] ${className}`}>{children}</div>
@@ -60,11 +60,11 @@ export default function HomePage() {
                 Product documentation
               </span>
               <h1 className="mb-5 text-[clamp(34px,4.4vw,54px)] font-bold leading-[1.12] tracking-[-.02em] text-[#222]">
-                TechCatalyst AI: публичный пакет документов и материалов о продукте.
+                Техкаталист ИИ: публичный пакет документов и материалов о программном обеспечении.
               </h1>
               <p className="max-w-[700px] text-[clamp(16px,1.6vw,19px)] text-muted">
-                Раздел с описанием программного продукта, архитектуры, жизненного цикла, правового статуса,
-                тарифной модели и материалов для экспертной проверки и закупки.
+                Раздел правообладателя с документацией на программное обеспечение «Техкаталист ИИ», включая
+                описание функциональных характеристик, сведения для установки и сведения для эксплуатации.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
@@ -89,7 +89,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-[22px] font-semibold tracking-[-.02em] text-[#222]">Ключевые сведения</div>
-                  <div className="text-[14px] text-muted">Для юристов, экспертов, закупки и технической команды</div>
+                  <div className="text-[14px] text-muted">Для реестра, экспертов, закупки и технической команды</div>
                 </div>
               </div>
 
@@ -99,6 +99,7 @@ export default function HomePage() {
                   'Дополнительный класс: 02.08',
                   'ОКПД2: 62.01.29.000 и 58.29.50.000',
                   'Модель предоставления: неисключительная лицензия',
+                  'На странице размещена документация по п. 4 ж Правил, утв. ПП РФ № 1236',
                   'Раздел документов обслуживается из текущего репозитория',
                 ].map((item) => (
                   <div key={item} className="rounded-card border border-line bg-soft px-4 py-3 text-[14px] text-ink">
@@ -132,7 +133,7 @@ export default function HomePage() {
                 <div>
                   <h2 className="text-[28px] font-semibold tracking-[-.02em] text-[#222]">О продукте и архитектуре</h2>
                   <p className="mt-1 text-[15px] text-muted">
-                    Сводка по функциональности, техническому стеку и составу экспертного экземпляра.
+                    Сводка по функциональности, техническому стеку и составу программного обеспечения.
                   </p>
                 </div>
               </div>
@@ -184,11 +185,46 @@ export default function HomePage() {
                 </div>
                 <div className="mt-5 space-y-3 text-[15px] leading-7 text-muted">
                   <p>Описание функциональности, архитектуры, эксплуатации и жизненного цикла.</p>
-                  <p>Инструкция по установке экспертного экземпляра и работе с тестовыми учётными данными.</p>
+                  <p>Инструкция по установке программного обеспечения и работе с тестовыми учётными данными.</p>
                   <p>Тарифная политика, сведения о принадлежности сайтов и документы по правам на ПО.</p>
                 </div>
               </section>
             </aside>
+          </Wrap>
+        </section>
+
+        <section className="pb-20">
+          <Wrap>
+            <div className="rounded-panel border border-line bg-white p-7 shadow-panel">
+              <div className="flex items-center gap-3">
+                <div className="rounded-full bg-soft p-3 text-blue">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2 className="text-[28px] font-semibold tracking-[-.02em] text-[#222]">
+                    Документация программного обеспечения «Техкаталист ИИ»
+                  </h2>
+                  <p className="mt-1 text-[15px] text-muted">
+                    Обязательная документация, размещенная на сайте правообладателя: описание функциональных
+                    характеристик программного обеспечения, а также информация, необходимая для установки и
+                    эксплуатации.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 lg:grid-cols-3">
+                {registryRequiredDocs.map((doc) => (
+                  <article key={doc.slug} className="rounded-card border border-line bg-soft p-5">
+                    <h3 className="text-[18px] font-semibold tracking-[-.02em] text-[#222]">{doc.title}</h3>
+                    <p className="mt-3 text-[15px] leading-7 text-muted">{doc.description}</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {doc.txtFile ? <DocLink fileName={doc.txtFile} label="TXT" /> : null}
+                      {doc.docxFile ? <DocLink fileName={doc.docxFile} label="DOCX" /> : null}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </Wrap>
         </section>
 
@@ -201,7 +237,8 @@ export default function HomePage() {
               <div>
                 <h2 className="text-[30px] font-semibold tracking-[-.02em] text-[#222]">Публичные документы</h2>
                 <p className="mt-1 text-[15px] text-muted">
-                  Базовый пакет материалов о продукте с TXT и DOCX-выгрузками.
+                  Полный комплект публичных материалов о программном обеспечении, правовом статусе и документации
+                  для экспертной проверки.
                 </p>
               </div>
             </div>
