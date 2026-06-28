@@ -66,7 +66,7 @@ export const capabilityGroups: CapabilityGroup[] = [
     ],
   },
   {
-    title: 'Экспертный экземпляр',
+    title: 'Проверка и эксплуатация',
     items: [
       'установка по инструкции с PostgreSQL, Prisma и environment-переменными',
       'тестовые учетные записи и тестовые ключи вместо production-данных',
